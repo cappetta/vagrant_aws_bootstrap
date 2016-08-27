@@ -1,0 +1,19 @@
+# vagrant.yaml
+# @author: cappetta
+---
+  - name:       aws1
+    box:        'dummy'
+    ami:        ubuntu/trusty64
+    security_groups:
+      - sg1:
+        name:   ELK_Stack
+        id:     sg-123w123
+    type:       "t1.micro"
+    initScript:
+      - puppet:
+        init:   "./puppet/ubuntu_puppet_bootstrap_install.sh"
+    Folders:
+      - folder1:
+        local:  "./puppet"
+        remote: "/home/folder1"
+
