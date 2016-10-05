@@ -3,15 +3,14 @@
 ---
   - name:       aws1
     box:        'dummy'
-    ami:        ubuntu/trusty64
-    security_groups:
-      - sg1:
-        name:   ELK_Stack
-        id:     sg-123w123
-    type:       "t1.micro"
+    box_url:    'https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box'
+    ami:        'ami-6d1c2007'
+    region:        'us-east-1'
+    secgroup_name: "vagrant"
+    type:       "t2.micro"
     initScript:
       - puppet:
-        init:   "./puppet/ubuntu_puppet_bootstrap_install.sh"
+        init:   "./puppet/centos_installer.sh"
     Folders:
       - folder1:
         local:  "./puppet"
