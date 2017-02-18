@@ -1,6 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# DevOps Workflow
+# install the dependent plugins
+# handle conditionals shared folder, init scripts
+# handle orchestration and provisioning
+# handle networking, ACLs, and security groups		
+# implement monitoring and alerting framework		
+
+
 # How to execute a command during vagrant processing...
 # ref_url: http://superuser.com/questions/701735/run-script-on-host-machine-during-vagrant-up
 # todo: decom after baselining to vagrantfile master repo
@@ -77,6 +85,7 @@ nodes = YAML.load_file("./yaml/vagrant.yaml")
 
 Vagrant.configure("2") do |config|
   config.vm.box = "dummy"
+  config.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 
  nodes.each do |node|
   config.vm.define node["name"] do |node_config|
@@ -114,7 +123,7 @@ Vagrant.configure("2") do |config|
 
       # aim for the target lookup to be: aws_facts['us-east-1']['centos']"
       if node["ami"] == aws_facts["centos"]
-        # 'ami-6d1c2007' # todo: this needs to be put into a dictionary for different os types and default usernames by region.  this is a good starter ruby extension
+        # 'ami-xxxxxx' # todo: this needs to be put into a dictionary for different os types and default usernames by region.  this is a good starter ruby extension
         override.ssh.username = "centos"
        elsif node["ami"] =='ami-xxxxxx' #todo: confirm this is the custom AMI for windows7 in us-west-2
          override.ssh.username = "vagrant"
