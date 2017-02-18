@@ -1,0 +1,9 @@
+[
+  {
+    "Description": "Windows 7 x64",
+    "Format": "vmdk",
+    "UserBucket": {
+      "S3Bucket": "the_name_of_your_s3_bucket
+      "S3Key": "Win7-64-disk1.vmdk"
+    }
+  }]
