@@ -173,7 +173,7 @@ Vagrant.configure("2") do |config|
           node_config.vm.provision :shell, inline: script["init"], privileged: true, env: {"VAGRANT_HOME" => "/var/vagrant"} #todo: test env variables are being created / captured
         end
       end
-
+    node_config.vm.post_up_message = "System has provisioned successfully -- please validate the boxes ~cappetta"
   end
 
   # Run Puppet Manifests to setup virtual Desktop env
@@ -189,11 +189,10 @@ end
 #  config.vm.provision :docker_compose, yml: ["/vagrant/docker/docker-compose-manager-with-clients.yml"], rebuild: true, project_name: "tenable", run: "always"
   config.vm.provision :docker_login, username: "xxxxxxxxx", email: "email@domain.com", password: "", server: "https://private-registry.at.domain.com"
 
-
   # messages after booting - todo: check provisioning status w/ custom ruby code
   # ref_url: http://stackoverflow.com/questions/30820949/print-message-after-booting-vagrant-machine-with-vagrant-up
-  END {
-    puts "Vagrant Command completed"
-  }
+  #END {
+  #  puts "Vagrant Command completed"
+  #}
 
 end
