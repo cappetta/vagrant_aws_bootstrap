@@ -158,6 +158,8 @@ Vagrant.configure("2") do |config|
         node['folders'].each do |folder|
           if node["isWindows"]
             node_config.vm.synced_folder folder['local'], folder['virtual'] , type: "winrm"
+	    node_config.vm.synced_folder "./shared", "/vagrantshared"
+ 	    node_config.vm.provision :shell, :path => "./shared/shell/main.cmd"
 	  else
             node_config.vm.synced_folder folder['local'], folder['virtual'] , type: 'rsync', :mount_options => ['dmode=775', 'fmode=775']
           end
@@ -187,7 +189,9 @@ end
   # now provision Docker stuff
   config.vm.provision :docker
 #  config.vm.provision :docker_compose, yml: ["/vagrant/docker/docker-compose-manager-with-clients.yml"], rebuild: true, project_name: "tenable", run: "always"
-  config.vm.provision :docker_login, username: "xxxxxxxxx", email: "email@domain.com", password: "", server: "https://private-registry.at.domain.com"
+  config.vm.provision :docker_login, username: creds["docker_user"], email: creds["docker_email"], password: creds["docker_reg_pass"], server: creds["docker_registry_url"]
+#  config.vm.provision :docker_login, username: "tcappetta", email: "tcappetta@tenable.com", password: "d0ck3r", server: "https://docker-registry.lab.tenablesecurity.com"
+
 
   # messages after booting - todo: check provisioning status w/ custom ruby code
   # ref_url: http://stackoverflow.com/questions/30820949/print-message-after-booting-vagrant-machine-with-vagrant-up
