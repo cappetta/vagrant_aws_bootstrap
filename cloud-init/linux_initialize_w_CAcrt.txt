@@ -2,6 +2,10 @@
 runcmd:
   - echo 'Defaults:ec2-user !requiretty' >> /etc/sudoers.d/888-vagrant-cloud-init-requiretty
   - echo 'Defaults:centos !requiretty' >> /etc/sudoers.d/888-vagrant-cloud-init-requiretty
+  - echo 'Defaults:ubuntu !requiretty' >> /etc/sudoers.d/888-vagrant-cloud-init-requiretty
+  - echo 'Defaults:admin !requiretty' >> /etc/sudoers.d/888-vagrant-cloud-init-requiretty
+  - echo 'Defaults:root !requiretty' >> /etc/sudoers.d/888-vagrant-cloud-init-requiretty
+  - echo 'Defaults:fedora !requiretty' >> /etc/sudoers.d/888-vagrant-cloud-init-requiretty
   - 'yum install -y epel-release'
   - 'yum update -y'
   - 'yum install -y python-pip'
