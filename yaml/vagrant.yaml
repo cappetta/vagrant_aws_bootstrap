@@ -16,3 +16,163 @@
         local:  "./puppet"
         remote: "/home/folder1"
 
+- name:       centos7
+  ami:        'ami-6d1c2007'
+  user: centos
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant"
+  type: "t2.small"
+  userData: 'cloud-init/scanner_initialize.txt'
+
+- name: ubuntu1604
+  ami: "ami-48b63120"
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "m1.small"
+  user: "ubuntu"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: ubuntu1404
+  ami: "ami-a95044be"
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "m1.small"
+  user: "ubuntu"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: ubuntu1204
+  ami: "ami-089b441e"
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "m1.small"
+  user: "ubuntu"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: centos7
+  ami: "ami-6d1c2007"
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  user: "centos"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: debian8
+  ami: "ami-cb4b94dd"
+  user: admin
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: suse12
+  ami: ami-48b63120
+  user: root
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "m1.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: suse11
+  ami: ami-7f2e6015
+  user: root
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "m1.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: amazon_ecs_ami
+  ami: ami-92659c84
+  user: ec2-user
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: amazon_hvm_ami
+  ami: ami-0b33d91d
+  user: ec2-user
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: rhel7
+  ami: 	ami-a8d369c0
+  user: ec2-user
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: rhel6.5
+  ami:  ami-1643ff7e
+  user: ec2-user
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "m1.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: rhel5
+  ami: ami-4c6ad824
+  user: root
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "m1.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: kali
+  ami:	ami-5008d946
+  user: root
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: coreos
+  ami: ami-f29843e4
+  user: core
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: opensuse_42.2
+  ami: ami-eada30fc
+  user: root
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxxx'
+  secgroup_name: 'sg-xxxxxxx'
+  aws_keypair_name: "vagrant_cappetta"
+  type: "t2.small"
+  userData: 'cloud-init/basic_setup.txt'
+
