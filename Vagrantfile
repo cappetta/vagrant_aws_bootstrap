@@ -95,8 +95,6 @@ Vagrant.configure("2") do |config|
       config.winrm.username = "vagrant"
       config.winrm.password = "vagrant"	
       config.windows.set_work_network = true
-      #config.winrm.host= 
-#      config.vm.network "public_network"
       config.winrm.port = 5985
       config.winrm.transport = :plaintext
       config.winrm.max_tries=100
@@ -121,12 +119,9 @@ Vagrant.configure("2") do |config|
 
       aws.ssh_host_attribute = :private_ip_address
 
-      # aim for the target lookup to be: aws_facts['us-east-1']['centos']"
-      if node["ami"] == aws_facts["centos"]
-        # 'ami-xxxxxx' # todo: this needs to be put into a dictionary for different os types and default usernames by region.  this is a good starter ruby extension
-        override.ssh.username = "centos"
-       elsif node["ami"] =='ami-xxxxxx' #todo: confirm this is the custom AMI for windows7 in us-west-2
-         override.ssh.username = "vagrant"
+      # If default user defined otherwise ec2-user
+       if node["user"]
+        override.ssh.username = node["user"]
       else
         override.ssh.username = "ec2-user"
       end
@@ -158,16 +153,16 @@ Vagrant.configure("2") do |config|
         node['folders'].each do |folder|
           if node["isWindows"]
             node_config.vm.synced_folder folder['local'], folder['virtual'] , type: "winrm"
-	    node_config.vm.synced_folder "./shared", "/vagrantshared"
- 	    node_config.vm.provision :shell, :path => "./shared/shell/main.cmd"
-	  else
+            node_config.vm.synced_folder "./shared", "/vagrantshared"
+            node_config.vm.provision :shell, :path => "./shared/shell/main.cmd"
+          else
             node_config.vm.synced_folder folder['local'], folder['virtual'] , type: 'rsync', :mount_options => ['dmode=775', 'fmode=775']
           end
 	# todo: if isWindows then sync folders differently...
         end
       end
 
-    node_config.vm.provision "list-files", type: "local_shell", command: "ls -alrt ../"
+    node_config.vm.provision "list-files", type: "local_shell", command: "dir"
 
       unless node["initScript"].nil?
         node["initScript"].each do |script|
@@ -188,15 +183,14 @@ end
 
   # now provision Docker stuff
   config.vm.provision :docker
-#  config.vm.provision :docker_compose, yml: ["/vagrant/docker/docker-compose-manager-with-clients.yml"], rebuild: true, project_name: "tenable", run: "always"
+#  config.vm.provision :docker_compose, yml: ["/vagrant/docker/docker_compose.yml"], rebuild: true, project_name: "project_name", run: "always"
   config.vm.provision :docker_login, username: creds["docker_user"], email: creds["docker_email"], password: creds["docker_reg_pass"], server: creds["docker_registry_url"]
-#  config.vm.provision :docker_login, username: "tcappetta", email: "tcappetta@tenable.com", password: "d0ck3r", server: "https://docker-registry.lab.tenablesecurity.com"
 
 
   # messages after booting - todo: check provisioning status w/ custom ruby code
   # ref_url: http://stackoverflow.com/questions/30820949/print-message-after-booting-vagrant-machine-with-vagrant-up
-  #END {
-  #  puts "Vagrant Command completed"
-  #}
+#  END {
+#    puts "Vagrant Command completed"
+#  }
 
 end
