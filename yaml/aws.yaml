@@ -1,0 +1,15 @@
+# aws.yaml
+# @author: cappetta
+# purpose: AWS credentials & SSH Key are stored outside main yaml config file
+---
+access_key: "<AccessKey>"
+secret_key: "<secret_key>"
+private_key_path: "/path/to/the.pem"
+aws_keypair_name: "aws_keypair_name"
+docker_user: "private_docker_user"
+docker_email: "private_docker_email"
+docker_reg_pass: "ur_pass"
+docker_registry_url: "https://docker-registry.this.isMyDomain.com" 
+yaml_of_instances: "./yaml/vagrant.linux.yaml"
+vm_user: "terraform"
+vm_pass: "terraform"
