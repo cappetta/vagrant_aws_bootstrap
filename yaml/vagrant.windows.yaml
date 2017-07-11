@@ -2,66 +2,59 @@
 # @author: cappetta
 # purpose: Vagrant leverages yaml to define instances, initialization, provisioning dependencies, & files/folders
 ---
-- name:       win7-test
-  ami:        'ami-xxxxxxx'
-  user: "vagrant"
-  region:     'us-east-1'
-  isWindows:  True
-  subnet_id:   'subnet-xxxxx'
-  secgroup_name: 'sg-xxxxxxxx'
-  aws_keypair_name: "vagrant"
-  type: "t2.small"
-  userData: 'cloud-init/windows_initialize.txt'
-  folders:
-    - main_folder:
-      local:    './'
-      virtual:  'C:\\Users\vagrant\Desktop\files'
-  initScript:
-    - install_puppet:
-      init: "./shared/shell/main.cmd"
-  # This shell provisioner installs chocolatey, ruby, and puppet. Also runs librarian-puppet.
-
 - name:       win2016_base
-  ami:        'ami-b06249a7'
-  user: admin
+  ami:        'ami-b6af04a0'
+  user:       "terraform"
+  password:   "terraform"
   region:     'us-east-1'
-  subnet_id:   'subnet-xxxxxxx'
+  subnet_id:   'subnet-xxxxxx'
   secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "vagrant_key"
-  type: "t2.small"
+  aws_keypair_name: "private_keypair_name"
+  type: "t2.xlarge"
+  userData: 'cloud-init/windows.setup'
+  isWindows:  True
 
 - name:       win2016_nano
   ami:        'ami-6e260e79'
-  user: admin
+  user:       "terraform"
+  password:   "terraform"
   region:     'us-east-1'
-  subnet_id:   'subnet-xxxxxxx'
+  subnet_id:   'subnet-xxxxxx'
   secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "vagrant_key"
+  aws_keypair_name: "private_keypair_name"
   type: "t2.small"
+  isWindows:  True
 
 - name:       win2016_docker
   ami:        'ami-73577c64'
-  user: admin
+  user: "terraform"
+  password:   "terraform"
   region:     'us-east-1'
-  subnet_id:   'subnet-xxxxxxx'
+  subnet_id:   'subnet-xxxxxx'
   secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "vagrant_key"
+  aws_keypair_name: "private_keypair_name"
   type: "t2.small"
+  isWindows:  True
+
 
 - name:       win2016_sql
   ami:        'ami-28b9913f'
-  user: admin
+  user: "terraform"
+  password:   "terraform"
   region:     'us-east-1'
-  subnet_id:   'subnet-xxxxxxx'
+  subnet_id:   'subnet-xxxxxx'
   secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "vagrant_key"
-  type: "t2.small"
+  aws_keypair_name: "private_keypair_name"
+  type: "t2.small"  
+  isWindows:  True
 
 - name: windows2003R2wSQLServer2005
   ami: ami-29ba5a3f
-  user:   administrator
+  user: "terraform"
+  password:   "terraform"
   region:     'us-east-1'
-  subnet_id:   'subnet-xxxxxxx'
+  subnet_id:   'subnet-xxxxxx'
   secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "vagrant_key"
+  aws_keypair_name: "private_keypair_name"
   type: "t2.small"
+  isWindows:  True
