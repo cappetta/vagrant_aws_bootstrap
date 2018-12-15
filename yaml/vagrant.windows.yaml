@@ -8,11 +8,21 @@
   password:   "terraform"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_keypair_name"
-  type: "t2.xlarge"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
+  type: "t2.large"
   userData: 'cloud-init/windows.setup'
   isWindows:  True
+  folders: # additional folders to sync up
+    - main_folder:
+      local:    '/some/local/path'
+      virtual:  'C:\\Users\vagrant\Desktop\files'
+   initScript:
+     - install_puppet:
+       init: "./shared/shell/main.cmd"
+   #This shell provisioner installs chocolatey, ruby, and puppet. Also runs librarian-puppet.
+
+
 
 - name:       win2016_nano
   ami:        'ami-6e260e79'
@@ -20,9 +30,9 @@
   password:   "terraform"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_keypair_name"
-  type: "t2.small"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
+  type: "t2.large"
   isWindows:  True
 
 - name:       win2016_docker
@@ -31,9 +41,9 @@
   password:   "terraform"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_keypair_name"
-  type: "t2.small"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
+  type: "t2.large"
   isWindows:  True
 
 
@@ -43,9 +53,9 @@
   password:   "terraform"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_keypair_name"
-  type: "t2.small"  
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
+  type: "t2.large"  
   isWindows:  True
 
 - name: windows2003R2wSQLServer2005
@@ -54,7 +64,7 @@
   password:   "terraform"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_keypair_name"
-  type: "t2.small"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
+  type: "t2.large"
   isWindows:  True
