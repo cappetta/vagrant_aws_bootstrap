@@ -1,9 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# DevOps Workflow
-# install the dependent plugins
-# handle conditionals shared folder, init scripts
+
+# SecDevOps Workflow to setup 1-or-Many machines in AWS:
+# 1) Install the dependent plugins
+# 2) Setup shared folder if they exist
+# 3) Execute initialization scripts on Asset
+#     a. cloud-init
+#     b. shell-> update env, install packages, ruby, puppet
+#     c. execute provisioners -> docker, puppet, docker-compose
 # handle orchestration and provisioning
 # handle networking, ACLs, and security groups		
 # implement monitoring and alerting framework		
@@ -60,22 +65,6 @@ module OS
         OS.unix? and not OS.mac?
     end
 end
-
-#
-# # If windows do not install the RSYNC plugin
-# if OS.windows?
-#     puts "Vagrant launched from windows."
-# else
-#   if OS.unix?
-#     puts "Vagrant launched from linux."
-#     unless Vagrant.has_plugin?("vagrant-gatling-rsync")
-#       system("vagrant plugin install vagrant-gatling-rsync")
-#       puts "Rsync Dependency installed, please try the command again."
-#     end
-#   else
-#     puts "vagrant launched from unknown os"
-#   end
-# end
 
 require 'yaml'
 creds = YAML.load_file("./yaml/aws.yaml")
