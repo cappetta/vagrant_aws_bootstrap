@@ -2,22 +2,12 @@
 # @author: cappetta
 # purpose: Vagrant leverages yaml to define instances, initialization, provisioning dependencies, & files/folders
 ---
-- name:       pt_scanner
-  ami:        'ami-6d1c2007'
-  user: centos
-  region:     'us-east-1'
-  subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
-  type: "t2.medium"
-  userData: 'cloud-init/scanner_initialize.txt'
-
 - name: ubuntu1604
   ami: 	ami-3267bb24
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   user: "ubuntu"
   userData: 'cloud-init/basic_setup.txt'
@@ -26,8 +16,8 @@
   ami: "ami-a95044be"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "m1.small"
   user: "ubuntu"
   userData: 'cloud-init/basic_setup.txt'
@@ -36,8 +26,8 @@
   ami: "ami-089b441e"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "m1.small"
   user: "ubuntu"
   userData: 'cloud-init/basic_setup.txt'
@@ -46,9 +36,19 @@
   ami: "ami-6d1c2007"
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
-  type: "t2.small" 
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
+  type: "t2.small"
+  user: "centos"
+  userData: 'cloud-init/basic_setup.txt'
+
+- name: centos6
+  ami: "ami-e3fdd999"
+  region:     'us-east-1'
+  subnet_id:   'subnet-xxxxxx'
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
+  type: "t2.small"
   user: "centos"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -57,8 +57,8 @@
   user: admin
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -67,8 +67,8 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "m1.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -77,8 +77,8 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "m1.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -87,8 +87,8 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -97,8 +97,8 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -107,8 +107,8 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -117,8 +117,8 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "m1.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -127,8 +127,8 @@
   user: root
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "m1.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -137,8 +137,8 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -147,8 +147,8 @@
   user: core
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   userData: 'cloud-init/basic_setup.txt'
 
@@ -157,7 +157,7 @@
   user: ec2-user
   region:     'us-east-1'
   subnet_id:   'subnet-xxxxxx'
-  secgroup_name: 'sg-xxxxxxx'
-  aws_keypair_name: "private_key_name"
+  secgroup_name: 'sg-xxxxxx'
+  aws_keypair_name: "vagrant_aws_bootstrap_key"
   type: "t2.small"
   userData: 'cloud-init/basic_setup.txt'
